@@ -54,4 +54,39 @@ document.getElementById("deathClockForm").addEventListener("submit", function(ev
   document.getElementById("daysLeft").textContent = `You have approximately ${daysLeft} days left to live.`;
   document.getElementById("causeOfDeath").textContent = `Cause of death: ${randomCause}.`;
   resultDiv.classList.remove("hidden");
+
+  // Start countdown timer
+  const countdownDiv = document.getElementById("countdown");
+  const interval = setInterval(() => {
+    const now = new Date();
+    const timeLeft = deathDate - now;
+
+    if (timeLeft <= 0) {
+      clearInterval(interval);
+      countdownDiv.textContent = "Your time has run out!";
+      return;
+    }
+
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+    countdownDiv.textContent = `Time remaining: ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds.`;
+  }, 1000);
+
+  // Achievements
+  const achievementsDiv = document.getElementById("achievements");
+  achievementsDiv.textContent = daysLeft > 10000 ? "Achievement Unlocked: You'll live a long life!" : "Achievement Unlocked: Make the most of your time!";
+
+  // Generate shareable text
+  const shareTextArea = document.getElementById("shareText");
+  shareTextArea.value = `I have approximately ${daysLeft} days left to live. Cause of death: ${randomCause}. Find out yours at "The Game Over Clock"!`;
+
+  // Handle sharing button
+  document.getElementById("shareButton").addEventListener("click", () => {
+    shareTextArea.select();
+    document.execCommand("copy");
+    alert("Results copied to clipboard!");
+  });
 });
