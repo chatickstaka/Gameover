@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Game Over Clock</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>The Game Over Clock</h1>
+    <p>Enter your birthday and find out how much time you have left...</p>
+    <form id="deathClockForm">
+      <label for="birthday">Your Birthday:</label>
+      <input type="date" id="birthday" required>
+      <button type="submit">Calculate My Time</button>
+    </form>
+    <div id="result" class="hidden">
+      <h2>Game Over</h2>
+      <p id="daysLeft"></p>
+      <p id="causeOfDeath"></p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
