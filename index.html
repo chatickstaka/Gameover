@@ -11,8 +11,28 @@
     <h1>The Game Over Clock</h1>
     <p>Enter your birthday and find out how much time you have left...</p>
     <form id="deathClockForm">
-      <label for="birthday">Your Birthday:</label>
-      <input type="date" id="birthday" required>
+      <label for="day">Day:</label>
+      <select id="day" required></select>
+      
+      <label for="month">Month:</label>
+      <select id="month" required>
+        <option value="0">January</option>
+        <option value="1">February</option>
+        <option value="2">March</option>
+        <option value="3">April</option>
+        <option value="4">May</option>
+        <option value="5">June</option>
+        <option value="6">July</option>
+        <option value="7">August</option>
+        <option value="8">September</option>
+        <option value="9">October</option>
+        <option value="10">November</option>
+        <option value="11">December</option>
+      </select>
+      
+      <label for="year">Year:</label>
+      <select id="year" required></select>
+      
       <button type="submit">Calculate My Time</button>
     </form>
     <div id="result" class="hidden">
